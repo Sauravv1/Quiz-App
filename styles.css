@@ -1,0 +1,365 @@
+/* Importing Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: green;
+}
+
+.startButton,
+.infoBox,
+.quizBox,
+.resultBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0px 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.3s ease;
+}
+
+.infoBox.activeInfo,
+.quizBox.activeQuiz,
+.resultBox.activeResult {
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.startButton button {
+  font-size: 25px;
+  font-weight: 500;
+  color: green;
+  padding: 15px 30px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+.infoBox {
+  width: 540px;
+  background: white;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.infoBox .infoTitle {
+  height: 60px;
+  width: 100;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.infoBox .infoList {
+  padding: 15px 35px;
+}
+
+.infoBox .infoList .info {
+  margin: 5px 0;
+  font-size: 17px;
+}
+
+.infoBox .infoList .info span {
+  font-weight: 600;
+  color: green;
+}
+
+.infoBox .buttons {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 35px;
+  border-top: 1px solid lightgrey;
+}
+
+.infoBox .buttons button {
+  margin: 0 5px;
+  height: 40px;
+  width: 100px;
+  outline: none;
+  border: 1px solid green;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.buttons button.restart {
+  color: white;
+  background: green;
+}
+
+.buttons button.restart:hover {
+  background: darkgreen;
+}
+
+.buttons button.quit {
+  color: green;
+}
+
+.buttons button.quit:hover {
+  color: white;
+  background: darkgreen;
+}
+
+.quizBox {
+  width: 550px;
+  background-color: white;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.quizBox header {
+  position: relative;
+  z-index: 99;
+  height: 70px;
+  padding: 0 30px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.quizBox header .title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.quizBox header .timer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 145px;
+  height: 45px;
+  background: lightgreen;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0 8px;
+}
+
+.quizBox header .timer .timeText {
+  font-weight: 400;
+  font-size: 17px;
+  user-select: none;
+}
+
+.quizBox header .timer .timeSec {
+  font-size: 18px;
+  font-weight: 500;
+  background: #343a40;
+  height: 30px;
+  width: 45px;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #343a40;
+  user-select: none;
+}
+
+.quizBox header .timeLine {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 3px;
+  width: 50%;
+  background: blue;
+}
+
+.quizBox section {
+  padding: 25px 30px 20px 30px;
+  background: white;
+}
+
+.quizBox section .queText {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.quizBox section .optionList {
+  padding: 20px 0;
+  display: block;
+}
+
+section .optionList .option {
+  background: rgb(211, 252, 211);
+  border: 1px solid lightgreen;
+  border-radius: 5px;
+  padding: 8px 15px;
+  margin-bottom: 15px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+section .optionList .option:hover {
+  color: green;
+  background: lightgreen;
+  border-color: lightgray;
+}
+
+.optionList .option:last-child {
+  margin-bottom: 0px;
+}
+
+.optionList .option .icon {
+  height: 26px;
+  width: 26px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 13px;
+  line-height: 24px;
+  pointer-events: none;
+}
+
+.optionList .option .icon.tick {
+  color: blue;
+  border-color: blue;
+  background: white;
+}
+
+.optionList .option .icon.cross {
+  color: red;
+  border-color: red;
+  background: white;
+}
+
+.optionList .option.correct {
+  color: white;
+  background: blue;
+  border-color: lightgray;
+}
+
+.optionList .option.incorrect {
+  color: white;
+  background: red;
+  border-color: lightgray;
+}
+
+.optionList .option.disabled {
+  pointer-events: none;
+}
+
+.quizBox footer {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  padding: 0 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quizBox footer .totalQue span {
+  display: flex;
+  user-select: none;
+}
+
+footer .totalQue span p {
+  font-weight: 500;
+  padding: 0 5px;
+}
+
+footer .totalQue span p:first-child {
+  padding-left: 0px;
+}
+
+footer .nextBtn {
+  display: none;
+  height: 40px;
+  padding: 0 13px;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  color: white;
+  background: green;
+  border-radius: 5px;
+  border: 1px solid green;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+footer .nextBtn:hover {
+  background: darkgreen;
+}
+
+.resultBox {
+  background: white;
+  width: 450px;
+  padding: 25px 30px;
+  border-radius: 5px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.resultBox .icon {
+  font-size: 100px;
+  color: green;
+  margin-bottom: 10px;
+}
+
+.resultBox .completeText {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.resultBox .scoreText span {
+  display: flex;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.scoreText span p {
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.resultBox .buttons {
+  display: flex;
+  margin: 20px 0;
+}
+
+.resultBox .buttons button {
+  margin: 0 10px;
+  height: 40px;
+  padding: 0 20px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid green;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
